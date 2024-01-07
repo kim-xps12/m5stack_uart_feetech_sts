@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <M5Core2.h>
+#include <M5Unified.h>
 #include <SCServo.h>
 
 // M5Stack Core2 PortA
@@ -34,7 +34,7 @@ void setup(){
 
   M5.begin();
     
-  M5.IMU.Init();
+  //M5.IMU.Init();
   M5.Lcd.fillScreen(BLACK);
   M5.Lcd.setTextColor(GREEN , BLACK);
   M5.Lcd.setTextSize(2);
@@ -68,8 +68,15 @@ void loop(){
       M5.Lcd.printf(String(ids[i]).c_str());
       M5.Lcd.print(": ");
       M5.Lcd.println(String(angled_deg[i]).c_str());
+
+      Serial.print("id");
+      Serial.printf(String(ids[i]).c_str());
+      Serial.print(": ");
+      Serial.println(String(angled_deg[i]).c_str());
+      M5.update();
     }
-    M5.update();
+    
+    
 
     delay(500);
   }
